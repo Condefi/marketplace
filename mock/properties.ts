@@ -1,9 +1,9 @@
 import Property1 from "@/assets/properties/property-1.webp";
 import { Property } from "@/types/property";
 
-export const properties: Property[] = [
+export const allProperties: Property[] = [
   {
-    id: 1,
+    id: "1",
     name: "Luxury Downtown Tower",
     campaignId: "campaign_001",
     description:
@@ -57,7 +57,7 @@ export const properties: Property[] = [
     },
   },
   {
-    id: 2,
+    id: "2",
     name: "Seaside Resort Complex",
     campaignId: "campaign_002",
     description:

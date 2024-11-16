@@ -31,7 +31,7 @@ export default function Home() {
                 transition={{ duration: 1, delay: 0.2 }}
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-end))] text-center font-sans font-bold leading-tight"
               >
-                Start funding in Condotels
+                Start investing in Condotels
               </motion.h1>
 
               <motion.p
@@ -49,9 +49,9 @@ export default function Home() {
                 transition={{ duration: 1, delay: 0.6 }}
                 className="mt-8 sm:mt-10 flex justify-center px-4"
               >
-                <Link href={appRoutes.fund}>
+                <Link href={appRoutes.marketplace}>
                   <RainbowButton className="w-full sm:w-auto bg-gradient-to-r from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-end))]">
-                    Discover Campaigns
+                    Discover Properties
                   </RainbowButton>
                 </Link>
               </motion.div>

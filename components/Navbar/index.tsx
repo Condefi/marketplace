@@ -24,10 +24,10 @@ const Navbar = () => {
   const navbarItems = [
     {
       id: 31231232,
-      path: appRoutes.fund,
+      path: appRoutes.marketplace,
       isDisabled: false,
-      parentRoute: "fund", // Changed to lowercase to match URL path
-      title: "Fund",
+      parentRoute: "marketplace",
+      title: "Marketplace",
       icon: <Coins className="max-w-full" />,
     },
     {

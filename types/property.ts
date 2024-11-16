@@ -1,5 +1,5 @@
 export type Property = {
-  id: number;
+  id: string;
   campaignId: string;
   name: string;
   description: string;
@@ -9,6 +9,8 @@ export type Property = {
     trait_type: string;
     value: string | number;
     unit?: string;
+    display_type?: string;
+    trait_count?: number;
   }[];
   properties: {
     amenities: string[];

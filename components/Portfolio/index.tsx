@@ -1,8 +1,8 @@
 "use client";
 
-import { Campaign } from "@/types/campaign";
+import { Property } from "@/types/property";
 
-const Portfolio = ({ campaigns }: { campaigns: Campaign[] }) => {
+const Portfolio = ({ properties }: { properties: Property[] }) => {
   return (
     <div className="mb-12">
       <h1 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -15,7 +15,7 @@ const Portfolio = ({ campaigns }: { campaigns: Campaign[] }) => {
         </div>
         <div className="bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm">
           <h3 className="text-lg font-medium mb-2">Active Investments</h3>
-          <p className="text-2xl font-bold">{campaigns.length}</p>
+          <p className="text-2xl font-bold">{properties.length}</p>
         </div>
         <div className="bg-white dark:bg-gray-700 rounded-xl p-6 shadow-sm">
           <h3 className="text-lg font-medium mb-2">Completed Investments</h3>

@@ -1,17 +1,17 @@
 "use client";
 
 import Portfolio from "@/components/Portfolio";
-import UserActiveCampaigns from "@/components/UserActiveCampagins";
-import UserCampaignHistory from "@/components/UserCampaignHistory";
-import { useUserCampaignsStore } from "@/state/useUserCampaignsStore";
+import UserProperties from "@/components/UserProperties";
+import UserPropertyHistory from "@/components/UserPropertyHistory";
+import { useUserPropertiesStore } from "@/state/useUserPropertiesStore";
 
 export default function Dashboard() {
-  const { currentUserCampaigns, pastUserCampaigns } = useUserCampaignsStore();
+  const { userProperties } = useUserPropertiesStore();
   return (
     <div className="relative min-h-screen pt-24 px-8">
-      <Portfolio campaigns={currentUserCampaigns} />
-      <UserActiveCampaigns currentUserCampaigns={currentUserCampaigns} />
-      <UserCampaignHistory pastUserCampaigns={pastUserCampaigns} />
+      <Portfolio properties={userProperties} />
+      <UserProperties userProperties={userProperties} />
+      <UserPropertyHistory pastUserProperties={userProperties} />
     </div>
   );
 }
