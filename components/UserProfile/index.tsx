@@ -14,12 +14,13 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useGetKycViewerInfo } from "@/hooks/user/useGetKycViewerInfo";
 import { kintoSDK } from "@/lib/kintoSDK";
 import { truncateAddress } from "@/lib/utils";
 import { useUserStore } from "@/state/userStore";
 import { Info } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useDisconnect } from "wagmi";
 import NetworkSwitch from "../NetworkSwitch";
 import { Button } from "../ui/button";
@@ -36,6 +37,15 @@ export const UserModal = () => {
 
 const WalletInfo = () => {
   const accountInfo = useUserStore((state) => state.accountInfo);
+  const kycViewerInfo = useUserStore((state) => state.kycViewerInfo);
+  const {
+    isIndividual,
+    isCorporate,
+    isKYC,
+    isSanctionsSafe,
+    country,
+    walletOwners,
+  } = useGetKycViewerInfo(accountInfo?.walletAddress);
   const items = [
     {
       label: "Wallet Address",
@@ -44,12 +54,52 @@ const WalletInfo = () => {
       showTooltip: true,
     },
     {
-      label: "Approval Status",
-      value: accountInfo?.approval ? "Approved" : "Pending",
-      tooltip: "Your approval status",
+      label: "KYC Status",
+      value: isKYC ? "KYC" : "Not KYC",
+      tooltip: "KYC status of your wallet",
+      showTooltip: true,
+    },
+    {
+      label: "Corporate",
+      value: isCorporate ? "Yes" : "No",
+      tooltip: "Corporate status of your wallet",
+      showTooltip: true,
+    },
+    {
+      label: "Individual",
+      value: isIndividual ? "Yes" : "No",
+      tooltip: "Individual status of your wallet",
+      showTooltip: true,
+    },
+    {
+      label: "Sanctions Safe",
+      value: isSanctionsSafe ? "Safe" : "Unsafe",
+      tooltip: "Sanctions safe status of your wallet",
+      showTooltip: true,
+    },
+    {
+      label: "Country",
+      value: country,
+      tooltip: "Country of your wallet",
+      showTooltip: true,
+    },
+    {
+      label: "Wallet Owners",
+      value: (
+        <div className="flex flex-col gap-2">
+          {walletOwners?.map((owner) => (
+            <span key={owner} className="font-mono">
+              {truncateAddress(owner)}
+            </span>
+          ))}
+        </div>
+      ),
+      tooltip: "Wallet owners of your wallet",
       showTooltip: true,
     },
   ];
+
+  console.log("kycViewerInfo", kycViewerInfo);
 
   return (
     <div className="p-4 rounded-lg border border-gray-300 dark:border-neutral-700">
@@ -67,7 +117,7 @@ const WalletInfo = () => {
                 </Tooltip>
               )}
             </div>
-            <span className="font-mono">{item.value}</span>
+            {item.value as ReactNode}
           </div>
         ))}
       </div>
@@ -78,6 +128,7 @@ const WalletInfo = () => {
 const WalletNotConnected = () => {
   const accountInfo = useUserStore((state) => state.accountInfo);
   const setAccountInfo = useUserStore((state) => state.setAccountInfo);
+  const setKYCViewerInfo = useUserStore((state) => state.setKycViewerInfo);
   const [isLoading, setIsLoading] = useState(false);
 
   async function fetchAccountInfo() {
@@ -181,7 +232,10 @@ const WalletConnected = () => {
                 <span
                   className="text-blue-500 underline cursor-pointer"
                   onClick={() => {
-                    window.open("https://kinto.xyz/", "_blank");
+                    window.open(
+                      "https://docs.kinto.xyz/kinto-the-safe-l2/building-on-kinto/rollup-features/kintowallet/",
+                      "_blank"
+                    );
                   }}
                 >
                   Read more

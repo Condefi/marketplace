@@ -22,7 +22,7 @@ export const kinto: Chain = defineChain({
     },
   },
   blockExplorers: {
-    default: { name: "Explorer", url: "https://kintoscan.io" },
+    default: { name: "Explorer", url: "https://explorer.kinto.xyz/" },
   },
 });
 export const wagmiConfig = createConfig({
