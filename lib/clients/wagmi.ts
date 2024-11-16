@@ -3,25 +3,31 @@
  * @description This file sets up the Wagmi configuration for the application, including wallet connectors and chain configurations.
  */
 
+import { Chain, defineChain } from "viem";
 import { createConfig, http } from "wagmi";
-import { arbitrum, arbitrumNova } from "wagmi/chains";
-import { injected, walletConnect } from "wagmi/connectors";
-import Web3AuthConnectorInstance from "../web3auth";
 
-export const wagmiConfig = createConfig({
-  chains: [arbitrum, arbitrumNova],
-  transports: {
-    [arbitrum.id]: http(),
-    [arbitrumNova.id]: http(),
+export const kinto: Chain = defineChain({
+  id: 7887,
+  name: "Kinto",
+  network: "kinto",
+  nativeCurrency: {
+    decimals: 18,
+    name: "ETH",
+    symbol: "ETH",
   },
-  connectors: [
-    walletConnect({
-      projectId: "3314f39613059cb687432d249f1658d2",
-      showQrModal: true,
-    }),
-    injected({
-      shimDisconnect: true,
-    }),
-    Web3AuthConnectorInstance([arbitrum, arbitrumNova]),
-  ],
+  rpcUrls: {
+    default: {
+      http: ["https://rpc.kinto-rpc.com/"],
+      webSocket: ["wss://rpc.kinto.xyz/ws"],
+    },
+  },
+  blockExplorers: {
+    default: { name: "Explorer", url: "https://kintoscan.io" },
+  },
+});
+export const wagmiConfig = createConfig({
+  chains: [kinto],
+  transports: {
+    [kinto.id]: http(),
+  },
 });
