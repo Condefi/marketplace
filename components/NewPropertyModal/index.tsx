@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 
 import { cn } from "@/lib/utils";
-import { useUserPropertiesStore } from "@/state/useUserCampaignsStore";
+import { useUserPropertiesStore } from "@/state/useUserPropertiesStore";
 import { Property } from "@/types/property";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
