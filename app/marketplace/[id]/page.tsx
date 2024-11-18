@@ -33,7 +33,7 @@ const CampaignPage = ({ params }: { params: { id: string } }) => {
         <div className="absolute bottom-0 left-0 right-0 z-20 p-6 bg-gradient-to-t from-black/70 to-transparent">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center">
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-end))] bg-clip-text text-transparent">
+              <h1 className="text-4xl font-bold text-white drop-shadow-2xl">
                 {property?.name}
               </h1>
             </div>

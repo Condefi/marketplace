@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import Navbar from "../Navbar";
+import NewPropertyModal from "../NewPropertyModal";
 import ThemeSwitch from "../ThemeSwitch";
 import MainLogo from "../ui/logo";
 import { UserModal } from "../UserProfile";
@@ -49,6 +50,7 @@ const Header = () => {
           </div>
           <div className="flex items-center">
             <UserModal />
+            <NewPropertyModal />
           </div>
         </div>
       </div>
